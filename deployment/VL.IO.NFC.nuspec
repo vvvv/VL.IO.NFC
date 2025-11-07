@@ -6,19 +6,19 @@
 
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
-    <id>VL.NewLibrary.Template</id>
+    <id>VL.IO.NFC</id>
     <!-- For more about versions see: https://thegraybook.vvvv.org/reference/extending/publishing.html#version -->
     <version>0.0.1-alpha</version>
-    <title>VL.NewLibrary.Template</title>
+    <title>VL.IO.NFC</title>
     <!-- Provide authors, projectUrl (website) and repository url--> 
-    <authors></authors>
-    <projectUrl></projectUrl>
-    <repository type="git" url="https://github.com/vvvv/VL.NewLibrary.Template.git" />
+    <authors>vvvv, Simon Weckert</authors>
+    <projectUrl>https://github.com/vvvv/VL.IO.NFC</projectUrl>
+    <repository type="git" url="https://github.com/vvvv/VL.IO.NFC.git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <!-- Provide description and tags-->
     <description></description>
     <tags>VL</tags>
-    <license type="expression">LGPL-3.0-only</license>
+    <license type="expression">MIT</license>
     <icon>icon\nugeticon.png</icon>
     <readme>docs\README.md</readme>
   </metadata>

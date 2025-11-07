@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NdefLibrary" Version="4.1.0" />
+    <PackageReference Include="PCSC" Version="7.0.1" />
+    <PackageReference Include="PCSC.Iso7816" Version="7.0.1" />
+    <PackageReference Include="VL.Core" Version="2025.7.1-0060-g4ca60ff2f6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="VL.Core" />
+    <Using Include="VL.Core.Import" />
+    <Using Include="VL.Lib.Collections" />
+    <Using Include="Stride.Core.Mathematics" />
+  </ItemGroup>
+
+</Project>
