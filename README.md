@@ -1,6 +1,6 @@
 # VL.IO.NFC
 
-# 🪪 NFC URL Writer & Reader
+# 🪪 NFC Writer & Reader
 
 A lightweight tool that writes a **URL** or **String** to an **NFC tags** using a supported USB NFC reader (such as an ACR122U).  
 This version **does not require or set any password** on the tag — it simply writes the provided URL/Strng or reads when a tag is detected.
