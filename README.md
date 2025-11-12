@@ -37,7 +37,7 @@ Links to libraries this is based on:
 * https://www.nuget.org/packages/NdefLibrary
 
 
-## Sponsoring
-Development of this library was partially sponsored by:  
+## Development
+Development of this library was made by:  
 * https://github.com/Delivers
 * https://github.com/vvvv
