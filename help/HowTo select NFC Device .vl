@@ -23,19 +23,14 @@
             <Pin Id="FMEaMaikPaHNonJSy1ftKy" Name="Output" Kind="OutputPin" />
             <Pin Id="T5SkROdBPXzLySJ4o7hY1E" Name="Readers" Kind="OutputPin" />
             <Pin Id="TWlB9LhGzh6P78wDXzDduu" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="UNsY1lIicPpPdbc0zqUopL" Name="ReaderName" Kind="OutputPin" />
             <Pin Id="DiyhMzWaGi9Qd47n7LyuVD" Name="Connected" Kind="OutputPin" />
-            <Pin Id="AuCF74UWswuLrGpW4CxTN9" Name="ReaderDeviceIndex" Kind="InputPin" />
             <Pin Id="BNZMOftoKUfL0PX391yEq3" Name="Enable" Kind="InputPin" />
+            <Pin Id="C9Jcz6vj3x6LssGLxJFom7" Name="Index" Kind="InputPin" />
+            <Pin Id="UNsY1lIicPpPdbc0zqUopL" Name="ReaderName" Kind="OutputPin" />
           </Node>
-          <Pad Id="P7H1Q4sjM9iNFI0RrDqbNO" Comment="connected" Bounds="901,351,35,35" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="IMBylLtgxHdLTXeLHW6XtI" Comment="&lt;&lt; selected NFC Device" Bounds="864,450,92,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="NSECGK0wc06Lguzu4m47Tc" Comment="&lt;&lt; select by ID " Bounds="789,263,26,15" ShowValueBox="true" isIOBox="true" Value="0">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="Integer32" />
-            </p:TypeAnnotation>
-          </Pad>
-          <Pad Id="GAMFP7GJdL5QA6U24p3DaC" Comment="Enable" Bounds="901,282,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+          <Pad Id="P7H1Q4sjM9iNFI0RrDqbNO" Comment="connected" Bounds="864,351,35,35" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="IMBylLtgxHdLTXeLHW6XtI" Comment="&lt;&lt; selected NFC Device" Bounds="901,471,193,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="GAMFP7GJdL5QA6U24p3DaC" Comment="Enable" Bounds="789,261,35,35" ShowValueBox="true" isIOBox="true" Value="True">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -46,7 +41,12 @@
           <Overlay Id="E36II1mni6yLSuLAE0cQJM" Name="Select NFC Device" Bounds="644,180,496,308">
             <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
           </Overlay>
-          <Pad Id="S9r1Gv9HWydM0chZnJD7Fp" Comment="Readers" Bounds="826,400,90,34" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="S9r1Gv9HWydM0chZnJD7Fp" Comment="Readers" Bounds="826,391,204,65" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Bpdccj9OwSpNxcCEpOZZDG" Comment="Index" Bounds="901,270,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="UmCrunuJqYSQX2tt0dntTo" Name="Create" />
         <Patch Id="LdsakQqNtibPFvSYJdQxZI" Name="Update" />
@@ -56,9 +56,9 @@
         </ProcessDefinition>
         <Link Id="IBKR578Lvb1PX3aJI0VcXj" Ids="DiyhMzWaGi9Qd47n7LyuVD,P7H1Q4sjM9iNFI0RrDqbNO" />
         <Link Id="Kd50ylhJHnXMUgm94L5Chz" Ids="UNsY1lIicPpPdbc0zqUopL,IMBylLtgxHdLTXeLHW6XtI" />
-        <Link Id="ByYybDbyyxmO9Iot914dl4" Ids="NSECGK0wc06Lguzu4m47Tc,AuCF74UWswuLrGpW4CxTN9" />
         <Link Id="U58IBPY2vu3MWODcZYYALv" Ids="GAMFP7GJdL5QA6U24p3DaC,BNZMOftoKUfL0PX391yEq3" />
         <Link Id="OMHvQ4Gm3LZN1ObVZ4QDfH" Ids="T5SkROdBPXzLySJ4o7hY1E,S9r1Gv9HWydM0chZnJD7Fp" />
+        <Link Id="UrSlJObjsMbOpz1oHJ5QDo" Ids="Bpdccj9OwSpNxcCEpOZZDG,C9Jcz6vj3x6LssGLxJFom7" />
       </Patch>
     </Node>
   </Patch>
