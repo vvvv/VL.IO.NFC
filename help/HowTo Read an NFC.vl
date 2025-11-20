@@ -42,31 +42,31 @@
             <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
           </Overlay>
           <Pad Id="S9r1Gv9HWydM0chZnJD7Fp" Comment="Readers" Bounds="826,391,207,70" ShowValueBox="true" isIOBox="true" />
-          <Overlay Id="BHdsLScj6NMON0bfJuS1HC" Name="Read NFC Tag" Bounds="641,559,496,281">
+          <Overlay Id="BHdsLScj6NMON0bfJuS1HC" Name="Read NFC Tag" Bounds="641,559,496,441">
             <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
           </Overlay>
-          <Node Bounds="787,609,85,26" Id="DlPsyIylBHbMT1OCnQtH57">
-            <p:NodeReference LastCategoryFullName="IO.NFC.NFCReader" LastDependency="VL.IO.NFC.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="ClassType" Name="NFCDevice" NeedsToBeDirectParent="true" />
-              <Choice Kind="OperationCallFlag" Name="NFCReader" />
-            </p:NodeReference>
-            <Pin Id="TDcswobQGg6OsWvmX4caWN" Name="Input" Kind="StateInputPin" />
-            <Pin Id="GhhgBO6F9eTOZ2IVDB7uGQ" Name="Output" Kind="StateOutputPin" />
-            <Pin Id="RjomVPYVU8xN6mglEzW169" Name="DataRead" Kind="OutputPin" />
-            <Pin Id="VQ0Zasm5DuHMCuhnv6K0D8" Name="Uid" Kind="OutputPin" />
-            <Pin Id="PJxAyG9P3BVNHDiwaI6KQp" Name="Records" Kind="OutputPin" />
-            <Pin Id="EmUOanxG2g3PhWl74qG7DD" Name="Statusss" Kind="OutputPin" />
-          </Node>
-          <Pad Id="Tg5fFJQDBHQPr51NumTYsV" Comment="Uid" Bounds="829,720,103,15" ShowValueBox="true" isIOBox="true" Value="04A1CCB1320289" />
-          <Pad Id="MB4aribFqOyPMekyyaWm6y" Comment="Records" Bounds="849,750,147,15" ShowValueBox="true" isIOBox="true" Value="﻿//5BAEEAQgBtAEEARwBjAEEAWgBnAEIAbwBBAEcAWQBBAGEAQQBBAC8AQQBIAFUAQQBhAFEAQgBrAEEARAAwAEEATQBBAEEAMABBAEUARQBBAE0AUQBCAEQAQQBFAE0AQQBRAGcAQQB4AEEARABNAEEATQBnAEEAdwBBAEQASQBBAE8AQQBBADUAQQBBAD0APQA=" />
-          <Pad Id="NafoZzknU6DM2dmZb1jPPI" Comment="Statusss" Bounds="869,680,47,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="KmJVYFWLMhrOCT0A4yLKYt" Comment="DataRead" Bounds="809,660,35,35" ShowValueBox="true" isIOBox="true" />
           <Pad Id="KWq0tbf4NUzMYXiXm63mgW" Comment="Index" Bounds="901,270,35,15" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="787,650,105,26" Id="VdpXTcEVlJxOPmTXYJzXoj">
+            <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice" LastDependency="VL.IO.NFC.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="NFCReader" />
+            </p:NodeReference>
+            <Pin Id="U1RJQle2p8QNgTKJ8NLUfv" Name="Input" Kind="StateInputPin" />
+            <Pin Id="SC5ajgugXFcP2UnDAqZDML" Name="Output" Kind="OutputPin" />
+            <Pin Id="FXVTqIEUJ78L3CiRHJwqVr" Name="DataRead" Kind="OutputPin" />
+            <Pin Id="UkjMHjnpbeIOHFaFWorIvn" Name="Uid" Kind="OutputPin" />
+            <Pin Id="Jnyvi4q2kPtODqhbAVD3K8" Name="Records" Kind="OutputPin" />
+            <Pin Id="BTvBoe6HeTVNAuTFgWNO67" Name="Statusss" Kind="OutputPin" />
+          </Node>
+          <Pad Id="BZB3WoIU0O2NE9ireOjWV5" Comment="Uid" Bounds="839,802,126,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="TmGuUuig9xXO4WTOphyDtW" Comment="Records" Bounds="864,762,134,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="I41arpalAE3Nk1aaBbzcu9" Comment="Statusss" Bounds="889,700,72,40" ShowValueBox="true" isIOBox="true" Value="Error decoding NDEF on reader 'ACS WalletMate II 2S CL Reader PICC 0': Ndef parse error: Expected Message Begin missing in first record." />
+          <Pad Id="D7HuDjjS0KSPhJmHdFlYot" Comment="DataRead" Bounds="814,842,35,35" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="DDDcarfTpNDQJdid5Mweka" Comment="" Bounds="789,901,153,73" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="UmCrunuJqYSQX2tt0dntTo" Name="Create" />
         <Patch Id="LdsakQqNtibPFvSYJdQxZI" Name="Update" />
@@ -78,12 +78,13 @@
         <Link Id="Kd50ylhJHnXMUgm94L5Chz" Ids="UNsY1lIicPpPdbc0zqUopL,IMBylLtgxHdLTXeLHW6XtI" />
         <Link Id="U58IBPY2vu3MWODcZYYALv" Ids="GAMFP7GJdL5QA6U24p3DaC,BNZMOftoKUfL0PX391yEq3" />
         <Link Id="OMHvQ4Gm3LZN1ObVZ4QDfH" Ids="T5SkROdBPXzLySJ4o7hY1E,S9r1Gv9HWydM0chZnJD7Fp" />
-        <Link Id="MdJGN98Wr9eLEkK71FerLu" Ids="FMEaMaikPaHNonJSy1ftKy,TDcswobQGg6OsWvmX4caWN" />
-        <Link Id="JRGCAF3rDDMMHXG0mKTtfT" Ids="VQ0Zasm5DuHMCuhnv6K0D8,Tg5fFJQDBHQPr51NumTYsV" />
-        <Link Id="D6NDBbocbP0MUzWb9CSBr5" Ids="PJxAyG9P3BVNHDiwaI6KQp,MB4aribFqOyPMekyyaWm6y" />
-        <Link Id="PO9LaIEol8uPVKN35iRUfp" Ids="EmUOanxG2g3PhWl74qG7DD,NafoZzknU6DM2dmZb1jPPI" />
-        <Link Id="H6bSQpilyXONVndZMW8jit" Ids="RjomVPYVU8xN6mglEzW169,KmJVYFWLMhrOCT0A4yLKYt" />
         <Link Id="LaTOguOUluSQBZ7zZtzhL1" Ids="KWq0tbf4NUzMYXiXm63mgW,QvYkodHhHisLdjCxwz0ueu" />
+        <Link Id="LSt8ZvTQWggNFJtPiiZcPn" Ids="UkjMHjnpbeIOHFaFWorIvn,BZB3WoIU0O2NE9ireOjWV5" />
+        <Link Id="Q4wi9erhNYUOSgW4yG37Fb" Ids="Jnyvi4q2kPtODqhbAVD3K8,TmGuUuig9xXO4WTOphyDtW" />
+        <Link Id="P9wYHl2VdtXNxVPIaSVtNE" Ids="BTvBoe6HeTVNAuTFgWNO67,I41arpalAE3Nk1aaBbzcu9" />
+        <Link Id="EY3NXhlSI2vLBKNmZhiXQC" Ids="FXVTqIEUJ78L3CiRHJwqVr,D7HuDjjS0KSPhJmHdFlYot" />
+        <Link Id="O4XznDqocbHOWoTDatOIIN" Ids="SC5ajgugXFcP2UnDAqZDML,DDDcarfTpNDQJdid5Mweka" />
+        <Link Id="EcPue0rz7iGLfENRvWZcyq" Ids="FMEaMaikPaHNonJSy1ftKy,U1RJQle2p8QNgTKJ8NLUfv" />
       </Patch>
     </Node>
   </Patch>
