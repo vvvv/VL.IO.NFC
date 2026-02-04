@@ -2,8 +2,6 @@
 
 Reads and writes data from and to NFC tags using a supported USB NFC reader (such as an ACR122U).  
 
-## Features
-
 - Writes any URL or String to an NFC tag 
 - Reads the UID and Data of the tag
 - Formats it as UID hex without spaces, e.g. 04A2B3C4D5E6F7
