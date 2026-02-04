@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="QcdwQ4qSegFOL1UAFRAt1g" LanguageVersion="2025.7.1-0154-ge6c16c963d" Version="0.128">
+  <NugetDependency Id="E0ArPC08OPRQNp8aN87IaH" Location="VL.CoreLib" Version="2025.7.1-0154-ge6c16c963d" />
+  <Patch Id="HSDtn7uDiQ4NNTSkboY8Ds">
+    <Canvas Id="EzMKuspF7tLO9lZIN9SOgP" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="SlNuFk6ySVhOjlHigQCTR3">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="BrLufmX5ildLeRs9ChHXNM">
+        <Canvas Id="C88VGZLd8sFNiOJOaQtF2R" CanvasType="Group">
+          <Node Bounds="356,221,70,19" Id="KxSKAGaYhClOiUCPsUrsyF">
+            <p:NodeReference LastCategoryFullName="IO.NFC" LastDependency="VL.IO.NFC.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="NFCDevice2" />
+            </p:NodeReference>
+            <Pin Id="RySIk4dsPv5LLAVuPctinu" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DLtmE0GJtxeNHhEjYJ9SNy" Name="Index" Kind="InputPin" />
+            <Pin Id="UEdGLzpcxOQL1hfprz02F1" Name="Output" Kind="OutputPin" />
+            <Pin Id="JCghIR5SJDFNpCYpuOvgLa" Name="Data" Kind="OutputPin" />
+            <Pin Id="M4rvAxaEapLOVVyYmAI12W" Name="Name" Kind="OutputPin" />
+            <Pin Id="UH14SNSIv9LM9ohINfTJWx" Name="Is Valid" Kind="OutputPin" />
+            <Pin Id="KRQn6DKBFlBOK2vzTnXDSo" Name="Enabled" Kind="InputPin" />
+          </Node>
+          <Pad Id="FiM8YPiB8ZLNEJiVzFeWuF" Comment="Enabled" Bounds="449,190,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="JnrFMXBGHfuLbS6onUJAjL" Comment="Index" Bounds="358,190,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="BhrvptZDyUSOReHth3Alt9" Comment="Is Valid" Bounds="423,261,35,35" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="378,300,65,19" Id="F0N4ltVx695NzV7PQkzQj6">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
+            </p:NodeReference>
+            <Pin Id="AEp0Lq3uIn7LAk9ITww9XP" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TiRl82GwEOsOe4xrbmE0vd" Name="Initial Result" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MCVPz6UgkapQMpk5XGUMu5" Name="Async Notifications" Kind="InputPin" />
+            <Pin Id="PxGyQ3DHkCoMXYAnUSr5dc" Name="Reset" Kind="InputPin" />
+            <Pin Id="DLX1zHYvmVyQQU1SrXFRfI" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="NIUCVNeQNt1Mz1R8yBbDmt" Name="Value" Kind="OutputPin" />
+            <Pin Id="NlF3fcK5upEQM1sSGHvSdK" Name="On Data" Kind="OutputPin" />
+          </Node>
+          <Pad Id="TsWmtf8Ms1FP9sBWoQa9X0" Comment="On Data" Bounds="440,340,35,35" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="356,600,59,26" Id="QfYgXQ6u8WbLKix0rLG5B2">
+            <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice2" LastDependency="VL.IO.NFC.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="WriteTag" />
+            </p:NodeReference>
+            <Pin Id="LSYvTIm0Gh5LSLuI3yQwrF" Name="Input" Kind="StateInputPin" />
+            <Pin Id="FmlSaYv4VNgQcZoyKSsu02" Name="Output" Kind="StateOutputPin" />
+            <Pin Id="QqN8iWgTuejOdCxzVfi4oT" Name="Url" Kind="InputPin" />
+            <Pin Id="Va2Kqd9vp3WMqFS5fwLSdY" Name="Apply" Kind="InputPin" />
+            <Pin Id="De54u8SOYmDLXB9HsEHwt1" Name="Status" Kind="OutputPin" />
+          </Node>
+          <Pad Id="RMgX16nmBCBPUS8gGcmbel" Comment="Apply" Bounds="412,580,35,35" ShowValueBox="true" isIOBox="true" Value="false">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Url" Bounds="385,550,84,15" ShowValueBox="true" isIOBox="true" Value="">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Ka3dgQYUPfqPsMVx4s5hWT" Comment="Status" Bounds="412,660,35,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="378,361,65,26" Id="KXhRZWDGDuUOxYFneZhgZ3">
+            <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice2.NFCReadData" LastDependency="VL.IO.NFC.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="NFCReadData" />
+              <Choice Kind="OperationCallFlag" Name="Split" />
+            </p:NodeReference>
+            <Pin Id="Lqru60Ku4JFOjbLCSbsF69" Name="Input" Kind="StateInputPin" />
+            <Pin Id="L977c88xlGHMdrHO3mfhi7" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="RaQbZ9qPm3XPq61R0ob5B1" Name="Uid" Kind="OutputPin" />
+            <Pin Id="CCpF6PyEC6TN61Z0wxebyQ" Name="Records" Kind="OutputPin" />
+            <Pin Id="AqMb43XsDviQEZkqdXFv2R" Name="Status" Kind="OutputPin" />
+          </Node>
+          <Pad Id="P0g2ldmND8gNTCi7DHRi3Q" Comment="Uid" Bounds="380,410,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="UXaX1zLB4FxMAgVVrCiEeo" Comment="Records" Bounds="410,430,35,33" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="SLBqgvGRsnrLyB3uP9PBK9" Comment="Status" Bounds="461,410,35,15" ShowValueBox="true" isIOBox="true" />
+        </Canvas>
+        <Patch Id="FezMAgcMR8aP6ffeaEny78" Name="Create" />
+        <Patch Id="EYQf0nUNFoGN7Zn5lX5L3i" Name="Update" />
+        <ProcessDefinition Id="NkdEXoRzK1ZOCw04BGpjqm">
+          <Fragment Id="OZEFhNXGUv2LfUqrdKkjPM" Patch="FezMAgcMR8aP6ffeaEny78" Enabled="true" />
+          <Fragment Id="B4F3RiEXCRhLmVeOh5m6AQ" Patch="EYQf0nUNFoGN7Zn5lX5L3i" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="AH9j8id5xZsNqKeEjjjDZS" Ids="FiM8YPiB8ZLNEJiVzFeWuF,KRQn6DKBFlBOK2vzTnXDSo" />
+        <Link Id="KprAiN1DCVNM25dFSzm4oZ" Ids="JnrFMXBGHfuLbS6onUJAjL,DLtmE0GJtxeNHhEjYJ9SNy" />
+        <Link Id="CCIjDAxmCt1QFP55K8MfDg" Ids="UH14SNSIv9LM9ohINfTJWx,BhrvptZDyUSOReHth3Alt9" />
+        <Link Id="Q3BmRBuEOhsLkJzgFuWKzY" Ids="JCghIR5SJDFNpCYpuOvgLa,MCVPz6UgkapQMpk5XGUMu5" />
+        <Link Id="HAUh64N4RxXMvP1q9mMKtX" Ids="NlF3fcK5upEQM1sSGHvSdK,TsWmtf8Ms1FP9sBWoQa9X0" />
+        <Link Id="DUkUAqKdA9INbk6sU0Pd2W" Ids="UEdGLzpcxOQL1hfprz02F1,LSYvTIm0Gh5LSLuI3yQwrF" />
+        <Link Id="UyVoNkYJDeEOEv2iJI3M1H" Ids="RMgX16nmBCBPUS8gGcmbel,Va2Kqd9vp3WMqFS5fwLSdY" />
+        <Link Id="NxLAjLjQaDXMK4vcAZ2zY8" Ids="KTgFfsMXJvBMIbXQME6uS6,QqN8iWgTuejOdCxzVfi4oT" />
+        <Link Id="El25frRnhEMOSq70qsrM6L" Ids="De54u8SOYmDLXB9HsEHwt1,Ka3dgQYUPfqPsMVx4s5hWT" />
+        <Link Id="MQyIwnjwJiUOm8ugugF7QU" Ids="NIUCVNeQNt1Mz1R8yBbDmt,Lqru60Ku4JFOjbLCSbsF69" />
+        <Link Id="GFCP0ce8LQ7LGy27ztb0tt" Ids="RaQbZ9qPm3XPq61R0ob5B1,P0g2ldmND8gNTCi7DHRi3Q" />
+        <Link Id="GFhFJK3GYEtPXwCeu9B1dy" Ids="CCpF6PyEC6TN61Z0wxebyQ,UXaX1zLB4FxMAgVVrCiEeo" />
+        <Link Id="ArK9zk99QBjL5NOzV7Zl88" Ids="AqMb43XsDviQEZkqdXFv2R,SLBqgvGRsnrLyB3uP9PBK9" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="AIMmdpq46OCOWP78znEbR7" Location="VL.IO.NFC" Version="0.0.0" />
+</Document>

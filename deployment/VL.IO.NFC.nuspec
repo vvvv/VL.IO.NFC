@@ -1,30 +1,27 @@
 <?xml version="1.0"?>
 
-<!-- For more info see: -->
-<!-- https://thegraybook.vvvv.org/reference/extending/publishing.html -->
-<!-- https://learn.microsoft.com/en-us/nuget/reference/nuspec -->
-
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>VL.IO.NFC</id>
-    <!-- For more about versions see: https://thegraybook.vvvv.org/reference/extending/publishing.html#version -->
     <version>0.0.1-alpha</version>
     <title>VL.IO.NFC</title>
-    <!-- Provide authors, projectUrl (website) and repository url--> 
     <authors>vvvv, Simon Weckert</authors>
     <projectUrl>https://github.com/vvvv/VL.IO.NFC</projectUrl>
     <repository type="git" url="https://github.com/vvvv/VL.IO.NFC.git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <!-- Provide description and tags-->
-    <description></description>
-    <tags>VL</tags>
+    <description>NFC Reader & Writer for vvvv</description>
+    <tags>VL, ndef</tags>
     <license type="expression">MIT</license>
+    <dependencies>
+	    <dependency id="NdefLibrary" version="4.1.0" />
+	    <dependency id="PCSC" version="7.0.1" />
+	    <dependency id="PCSC.Iso7816" version="7.0.1" />
+    </dependencies>
     <icon>icon\nugeticon.png</icon>
     <readme>docs\README.md</readme>
   </metadata>
   <files>
-    <!-- <file src="..\lib\**\*.dll" target="lib\" exclude="" /> -->
-	  <!-- <file src="..\runtimes\**\*.dll" target="runtimes\" exclude="" /> -->
+    <file src="..\lib\**\*.dll" target="lib\" exclude="" />
     <file src="..\*.vl" target="" exclude="" />
     <file src="..\help\**" target="help\" exclude="" />
     <file src="nugeticon.png" target="icon\" />

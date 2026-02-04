@@ -2,9 +2,6 @@
 using PCSC;
 using PCSC.Iso7816;
 using PCSC.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Numerics;
 
@@ -1071,45 +1068,39 @@ public static class Utils
         }
     }
 
-
-    
-
-public static void ReverseUidHexToDecimal_FromGetCardUid(
-    string uidHex,             // format: "04A1CCB1320289"
-    out string reversedHex,
-    out BigInteger decimalValue)
-{
-    reversedHex = string.Empty;
-    decimalValue = BigInteger.Zero;
-
-    if (string.IsNullOrWhiteSpace(uidHex))
-        return;
-
-    // Input is already hex without separators ("04A1CCB1320289")
-    uidHex = uidHex.ToUpperInvariant();
-
-    if (uidHex.Length % 2 != 0)
-        throw new ArgumentException("UID hex string must have an even number of characters.", nameof(uidHex));
-
-    // Convert UID hex → byte array
-    int byteCount = uidHex.Length / 2;
-    byte[] bytes = new byte[byteCount];
-
-    for (int i = 0; i < byteCount; i++)
+    public static void ReverseUidHexToDecimal_FromGetCardUid(
+        string uidHex,             // format: "04A1CCB1320289"
+        out string reversedHex,
+        out BigInteger decimalValue)
     {
-        bytes[i] = Convert.ToByte(uidHex.Substring(i * 2, 2), 16);
+        reversedHex = string.Empty;
+        decimalValue = BigInteger.Zero;
+
+        if (string.IsNullOrWhiteSpace(uidHex))
+            return;
+
+        // Input is already hex without separators ("04A1CCB1320289")
+        uidHex = uidHex.ToUpperInvariant();
+
+        if (uidHex.Length % 2 != 0)
+            throw new ArgumentException("UID hex string must have an even number of characters.", nameof(uidHex));
+
+        // Convert UID hex → byte array
+        int byteCount = uidHex.Length / 2;
+        byte[] bytes = new byte[byteCount];
+
+        for (int i = 0; i < byteCount; i++)
+        {
+            bytes[i] = Convert.ToByte(uidHex.Substring(i * 2, 2), 16);
+        }
+
+        // Reverse byte order
+        Array.Reverse(bytes);
+
+        // Convert reversed bytes → hex string
+        reversedHex = BitConverter.ToString(bytes).Replace("-", "");
+
+        // Convert reversed hex to decimal (BigInteger to avoid overflow)
+        decimalValue = BigInteger.Parse("0" + reversedHex, System.Globalization.NumberStyles.HexNumber);
     }
-
-    // Reverse byte order
-    Array.Reverse(bytes);
-
-    // Convert reversed bytes → hex string
-    reversedHex = BitConverter.ToString(bytes).Replace("-", "");
-
-    // Convert reversed hex to decimal (BigInteger to avoid overflow)
-    decimalValue = BigInteger.Parse("0" + reversedHex, System.Globalization.NumberStyles.HexNumber);
-}
-
-
-
 }
