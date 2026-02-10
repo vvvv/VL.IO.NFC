@@ -15,7 +15,7 @@
       </p:NodeReference>
       <Patch Id="BrLufmX5ildLeRs9ChHXNM">
         <Canvas Id="C88VGZLd8sFNiOJOaQtF2R" CanvasType="Group">
-          <Node Bounds="356,221,70,19" Id="KxSKAGaYhClOiUCPsUrsyF">
+          <Node Bounds="356,221,105,19" Id="KxSKAGaYhClOiUCPsUrsyF">
             <p:NodeReference LastCategoryFullName="IO.NFC" LastDependency="VL.IO.NFC.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="NFCDevice2" />
@@ -23,12 +23,14 @@
             <Pin Id="RySIk4dsPv5LLAVuPctinu" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="DLtmE0GJtxeNHhEjYJ9SNy" Name="Index" Kind="InputPin" />
             <Pin Id="UEdGLzpcxOQL1hfprz02F1" Name="Output" Kind="OutputPin" />
-            <Pin Id="JCghIR5SJDFNpCYpuOvgLa" Name="Data" Kind="OutputPin" />
-            <Pin Id="M4rvAxaEapLOVVyYmAI12W" Name="Name" Kind="OutputPin" />
+            <Pin Id="LU3DSDBqqqNNbjD2le6Kq1" Name="All Readers" Kind="OutputPin" />
+            <Pin Id="NyY3abPotmPQFQgkm6F5YI" Name="Selected Reader" Kind="OutputPin" />
             <Pin Id="UH14SNSIv9LM9ohINfTJWx" Name="Is Valid" Kind="OutputPin" />
             <Pin Id="KRQn6DKBFlBOK2vzTnXDSo" Name="Enabled" Kind="InputPin" />
+            <Pin Id="GbGlJkVlSjeLMqUcTtS2HQ" Name="Card Inserted" Kind="OutputPin" />
+            <Pin Id="G9t4GvgvvBtNEvX2RvFVL1" Name="Card Removed" Kind="OutputPin" />
           </Node>
-          <Pad Id="FiM8YPiB8ZLNEJiVzFeWuF" Comment="Enabled" Bounds="449,190,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+          <Pad Id="FiM8YPiB8ZLNEJiVzFeWuF" Comment="Enabled" Bounds="458,181,35,35" ShowValueBox="true" isIOBox="true" Value="False">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -36,13 +38,13 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="JnrFMXBGHfuLbS6onUJAjL" Comment="Index" Bounds="358,190,35,15" ShowValueBox="true" isIOBox="true" Value="0">
+          <Pad Id="JnrFMXBGHfuLbS6onUJAjL" Comment="Index" Bounds="358,181,35,15" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BhrvptZDyUSOReHth3Alt9" Comment="Is Valid" Bounds="423,261,35,35" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="378,300,65,19" Id="F0N4ltVx695NzV7PQkzQj6">
+          <Pad Id="BhrvptZDyUSOReHth3Alt9" Comment="Is Valid" Bounds="543,261,35,35" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="436,340,65,19" Id="F0N4ltVx695NzV7PQkzQj6">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
@@ -55,7 +57,7 @@
             <Pin Id="NIUCVNeQNt1Mz1R8yBbDmt" Name="Value" Kind="OutputPin" />
             <Pin Id="NlF3fcK5upEQM1sSGHvSdK" Name="On Data" Kind="OutputPin" />
           </Node>
-          <Pad Id="TsWmtf8Ms1FP9sBWoQa9X0" Comment="On Data" Bounds="440,340,35,35" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="TsWmtf8Ms1FP9sBWoQa9X0" Comment="Card Inserted" Bounds="498,380,35,35" ShowValueBox="true" isIOBox="true" />
           <Node Bounds="356,600,59,26" Id="QfYgXQ6u8WbLKix0rLG5B2">
             <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice2" LastDependency="VL.IO.NFC.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -63,7 +65,7 @@
             </p:NodeReference>
             <Pin Id="LSYvTIm0Gh5LSLuI3yQwrF" Name="Input" Kind="StateInputPin" />
             <Pin Id="FmlSaYv4VNgQcZoyKSsu02" Name="Output" Kind="StateOutputPin" />
-            <Pin Id="QqN8iWgTuejOdCxzVfi4oT" Name="Url" Kind="InputPin" />
+            <Pin Id="QqN8iWgTuejOdCxzVfi4oT" Name="Text" Kind="InputPin" />
             <Pin Id="Va2Kqd9vp3WMqFS5fwLSdY" Name="Apply" Kind="InputPin" />
             <Pin Id="De54u8SOYmDLXB9HsEHwt1" Name="Status" Kind="OutputPin" />
           </Node>
@@ -75,13 +77,13 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Url" Bounds="385,550,84,15" ShowValueBox="true" isIOBox="true" Value="">
+          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Text" Bounds="385,550,84,15" ShowValueBox="true" isIOBox="true" Value="">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
           <Pad Id="Ka3dgQYUPfqPsMVx4s5hWT" Comment="Status" Bounds="412,660,35,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="378,361,65,26" Id="KXhRZWDGDuUOxYFneZhgZ3">
+          <Node Bounds="436,401,65,26" Id="KXhRZWDGDuUOxYFneZhgZ3">
             <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice2.NFCReadData" LastDependency="VL.IO.NFC.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="RecordType" Name="NFCReadData" />
@@ -93,9 +95,24 @@
             <Pin Id="CCpF6PyEC6TN61Z0wxebyQ" Name="Records" Kind="OutputPin" />
             <Pin Id="AqMb43XsDviQEZkqdXFv2R" Name="Status" Kind="OutputPin" />
           </Node>
-          <Pad Id="P0g2ldmND8gNTCi7DHRi3Q" Comment="Uid" Bounds="380,410,35,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="UXaX1zLB4FxMAgVVrCiEeo" Comment="Records" Bounds="410,430,35,33" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="SLBqgvGRsnrLyB3uP9PBK9" Comment="Status" Bounds="461,410,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="P0g2ldmND8gNTCi7DHRi3Q" Comment="Uid" Bounds="438,450,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="UXaX1zLB4FxMAgVVrCiEeo" Comment="Records" Bounds="468,470,35,33" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="SLBqgvGRsnrLyB3uP9PBK9" Comment="Status" Bounds="519,450,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="R7qs3wH48ggOZaHhATHU2l" Comment="Selected Reader" Bounds="398,260,40,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="627,340,65,19" Id="FUnc5GYyDPqNLKtcoWVePM">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
+            </p:NodeReference>
+            <Pin Id="SyYu5GDuhe4NY9FkjIofx1" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DS0refEKv7xNEf9GYz9gcX" Name="Initial Result" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QwbA6KrPi66PkOHReGrbyj" Name="Async Notifications" Kind="InputPin" />
+            <Pin Id="EIfgLhRzVsyNcGwb375ELh" Name="Reset" Kind="InputPin" />
+            <Pin Id="ToWRzhWUalRQV0mzeWlJtG" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="NPYwch5o0BLMMxPuOoNAWx" Name="Value" Kind="OutputPin" />
+            <Pin Id="Jr5AuQ8jXTvLf9gc91hiWA" Name="On Data" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Tp0Rxz336urLoEY4lBsInk" Comment="Card Removed" Bounds="689,380,35,35" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="FezMAgcMR8aP6ffeaEny78" Name="Create" />
         <Patch Id="EYQf0nUNFoGN7Zn5lX5L3i" Name="Update" />
@@ -106,7 +123,6 @@
         <Link Id="AH9j8id5xZsNqKeEjjjDZS" Ids="FiM8YPiB8ZLNEJiVzFeWuF,KRQn6DKBFlBOK2vzTnXDSo" />
         <Link Id="KprAiN1DCVNM25dFSzm4oZ" Ids="JnrFMXBGHfuLbS6onUJAjL,DLtmE0GJtxeNHhEjYJ9SNy" />
         <Link Id="CCIjDAxmCt1QFP55K8MfDg" Ids="UH14SNSIv9LM9ohINfTJWx,BhrvptZDyUSOReHth3Alt9" />
-        <Link Id="Q3BmRBuEOhsLkJzgFuWKzY" Ids="JCghIR5SJDFNpCYpuOvgLa,MCVPz6UgkapQMpk5XGUMu5" />
         <Link Id="HAUh64N4RxXMvP1q9mMKtX" Ids="NlF3fcK5upEQM1sSGHvSdK,TsWmtf8Ms1FP9sBWoQa9X0" />
         <Link Id="DUkUAqKdA9INbk6sU0Pd2W" Ids="UEdGLzpcxOQL1hfprz02F1,LSYvTIm0Gh5LSLuI3yQwrF" />
         <Link Id="UyVoNkYJDeEOEv2iJI3M1H" Ids="RMgX16nmBCBPUS8gGcmbel,Va2Kqd9vp3WMqFS5fwLSdY" />
@@ -116,6 +132,10 @@
         <Link Id="GFCP0ce8LQ7LGy27ztb0tt" Ids="RaQbZ9qPm3XPq61R0ob5B1,P0g2ldmND8gNTCi7DHRi3Q" />
         <Link Id="GFhFJK3GYEtPXwCeu9B1dy" Ids="CCpF6PyEC6TN61Z0wxebyQ,UXaX1zLB4FxMAgVVrCiEeo" />
         <Link Id="ArK9zk99QBjL5NOzV7Zl88" Ids="AqMb43XsDviQEZkqdXFv2R,SLBqgvGRsnrLyB3uP9PBK9" />
+        <Link Id="Qw6uXkh6sx2OyKaeByXh96" Ids="NyY3abPotmPQFQgkm6F5YI,R7qs3wH48ggOZaHhATHU2l" />
+        <Link Id="NATA2tylShjPxVGKYpLdM7" Ids="GbGlJkVlSjeLMqUcTtS2HQ,MCVPz6UgkapQMpk5XGUMu5" />
+        <Link Id="FjWQWqd94yrPmjG9boRqzE" Ids="Jr5AuQ8jXTvLf9gc91hiWA,Tp0Rxz336urLoEY4lBsInk" />
+        <Link Id="Auhcwo7UCqALi7Mjexynw8" Ids="G9t4GvgvvBtNEvX2RvFVL1,QwbA6KrPi66PkOHReGrbyj" />
       </Patch>
     </Node>
   </Patch>
