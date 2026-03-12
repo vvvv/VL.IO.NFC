@@ -3,14 +3,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>VL.IO.NFC</id>
-    <version>0.0.3-alpha</version>
+    <version>0.0.4-alpha</version>
     <title>VL.IO.NFC</title>
     <authors>vvvv, Simon Weckert</authors>
     <projectUrl>https://github.com/vvvv/VL.IO.NFC</projectUrl>
     <repository type="git" url="https://github.com/vvvv/VL.IO.NFC.git" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>NFC Reader &amp; Writer for vvvv</description>
-    <tags>VL, ndef</tags>
+    <tags>VL, ndef, rfid</tags>
     <license type="expression">MIT</license>
     <dependencies>
 	    <dependency id="NdefLibrary" version="4.1.0" />
