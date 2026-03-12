@@ -5,7 +5,9 @@ Reads and writes data from and to NFC tags using a supported USB NFC reader (suc
 - Writes any URL or String to an NFC tag 
 - Reads the UID and Data of the tag
 - Formats it as UID hex without spaces, e.g. 04A2B3C4D5E6F7
-- Returns status for each write and read operation  
+- Returns status for each write and read operation
+- Tested with NFC Reader: ACS ACR1552U-MW
+- Tested with NFC Tags: ISO 14443 Type A, ISO 14443 Type B, ISO 15693, ISO 18092, MIFARE, FeliCa, PC/SC, NFC Forum - Type 1, NFC Forum - Type 2, NFC Forum - Type 3, NFC Forum - Type 4, NFC Forum - Type 5
 
 For use with vvvv, the visual live-programming environment for .NET: http://vvvv.org
 
