@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="QcdwQ4qSegFOL1UAFRAt1g" LanguageVersion="2025.7.2-0008-g5ff512c901" Version="0.128">
-  <NugetDependency Id="E0ArPC08OPRQNp8aN87IaH" Location="VL.CoreLib" Version="2025.7.2-0008-g5ff512c901" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="QcdwQ4qSegFOL1UAFRAt1g" LanguageVersion="2025.7.1" Version="0.128">
+  <NugetDependency Id="E0ArPC08OPRQNp8aN87IaH" Location="VL.CoreLib" Version="2025.7.1" />
   <Patch Id="HSDtn7uDiQ4NNTSkboY8Ds">
     <Canvas Id="EzMKuspF7tLO9lZIN9SOgP" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -18,7 +18,7 @@
           <Node Bounds="320,340,105,19" Id="KxSKAGaYhClOiUCPsUrsyF">
             <p:NodeReference LastCategoryFullName="IO.NFC" LastDependency="VL.IO.NFC.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="NFCDevice2" />
+              <Choice Kind="ProcessAppFlag" Name="NFCDevice" />
             </p:NodeReference>
             <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
             <Pin Id="RySIk4dsPv5LLAVuPctinu" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -82,7 +82,7 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Text" Bounds="349,744,84,15" ShowValueBox="true" isIOBox="true" Value="">
+          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Text" Bounds="349,744,84,15" ShowValueBox="true" isIOBox="true" Value="fiicojl">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -101,7 +101,7 @@
             <Pin Id="AqMb43XsDviQEZkqdXFv2R" Name="Status" Kind="OutputPin" />
           </Node>
           <Pad Id="P0g2ldmND8gNTCi7DHRi3Q" Comment="Uid" Bounds="402,644,95,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="UXaX1zLB4FxMAgVVrCiEeo" Comment="Records" Bounds="432,700,35,33" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="UXaX1zLB4FxMAgVVrCiEeo" Comment="Records" Bounds="432,700,90,34" ShowValueBox="true" isIOBox="true" />
           <Pad Id="SLBqgvGRsnrLyB3uP9PBK9" Comment="Status" Bounds="462,670,637,15" ShowValueBox="true" isIOBox="true" />
           <Pad Id="R7qs3wH48ggOZaHhATHU2l" Comment="Selected Reader" Bounds="402,380,198,15" ShowValueBox="true" isIOBox="true" />
           <Node Bounds="591,534,65,19" Id="FUnc5GYyDPqNLKtcoWVePM">

@@ -925,7 +925,6 @@
   </Patch>
   <NugetDependency Id="Ko9OqCOVyY7Pz8mbJrOqb0" Location="VL.CoreLib" Version="2025.7.1" />
   <NugetDependency Id="LVsfByM4mZmPoA1nypA8nZ" Location="NdefLibrary" Version="4.1.0" />
-  <NugetDependency Id="BHnPRY9PClsPlC789BsdJj" Location="PCSC" Version="7.0.1" />
-  <NugetDependency Id="EOXXhbFPO1EOxc3IeEX2ap" Location="PCSC.Iso7816" Version="7.0.1" />
   <PlatformDependency Id="O3koraTppuQPmt8BWWz0sp" Location="./lib/net8.0/VL.IO.NFC.dll" />
+  <NugetDependency Id="IYSZXpDcIsLPGX7AsWTZD8" Location="PCSC" Version="7.0.1" />
 </Document>

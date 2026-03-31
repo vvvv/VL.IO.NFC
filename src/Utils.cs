@@ -468,13 +468,13 @@ public static class Utils
             {
                 string desc;
 
-                if (record is NdefUriRecord uriRecord)
+                if (NdefUriRecord.IsRecordType(record))
                 {
-                    desc = uriRecord.Uri;
+                    desc = new NdefUriRecord(record).Uri;
                 }
-                else if (record is NdefTextRecord textRecord)
+                else if (NdefTextRecord.IsRecordType(record))
                 {
-                    desc = textRecord.Text;
+                    desc = new NdefTextRecord(record).Text;
                 }
                 else
                 {
