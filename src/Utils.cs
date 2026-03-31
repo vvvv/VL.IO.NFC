@@ -36,40 +36,6 @@ public static class Utils
     }
 
     /// <summary>
-    /// Listet alle verfügbaren PC/SC-Reader (z.B. ACR1552U).
-    /// </summary>
-    public static string[] ListAllReaders()
-    {
-        var contextFactory = ContextFactory.Instance;
-        using var context = contextFactory.Establish(SCardScope.System);
-
-        var readers = context.GetReaders();
-        if (readers == null || readers.Length == 0)
-        {
-            Console.WriteLine("No NFC readers found. Please check driver installation.");
-            return Array.Empty<string>();
-        }
-
-        Console.WriteLine("Available NFC Readers:");
-        foreach (var r in readers)
-            Console.WriteLine(" - " + r);
-
-        return readers;
-    }
-
-    /// <summary>
-    /// Gibt den ersten Readernamen zurück.
-    /// </summary>
-    public static string GetFirstReader(ISCardContext context)
-    {
-        var readers = context.GetReaders();
-        if (readers == null || readers.Length == 0)
-            throw new Exception("No smart card readers found. Is your NFC reader driver installed?");
-
-        return readers[0];
-    }
-
-    /// <summary>
     /// APDU senden (PC/SC), inkl. ACS-spezifischer Kommandos (CLA=FF).
     /// </summary>
     public static ResponseApdu TransmitApdu(SCardReader reader, CommandApdu apdu)
@@ -127,50 +93,6 @@ public static class Utils
 
         Console.WriteLine("Failed to read UID, SW1={0:X2}, SW2={1:X2}", response.SW1, response.SW2);
         return string.Empty;
-    }
-
-    /// <summary>
-    /// Nimmt Hexstring (z.B. "04A1CCB1320289"), dreht Byte-Reihenfolge und konvertiert in Dezimal.
-    /// </summary>
-    public static void ReverseHexToDecimal(
-        string hexInput,
-        out string reversedHex,
-        out long decimalValue)
-    {
-        reversedHex = string.Empty;
-        decimalValue = 0;
-
-        if (string.IsNullOrEmpty(hexInput))
-            return;
-
-        hexInput = hexInput.Replace(" ", "").ToUpperInvariant();
-
-        if (hexInput.Length % 2 != 0)
-            throw new ArgumentException("Hex string must have an even number of characters.", nameof(hexInput));
-
-        int byteCount = hexInput.Length / 2;
-        byte[] bytes = new byte[byteCount];
-        for (int i = 0; i < byteCount; i++)
-            bytes[i] = Convert.ToByte(hexInput.Substring(i * 2, 2), 16);
-
-        Array.Reverse(bytes);
-        reversedHex = BitConverter.ToString(bytes).Replace("-", "");
-        decimalValue = Convert.ToInt64(reversedHex, 16);
-    }
-
-    /// <summary>
-    /// Baut eine URL mit ?uid=... oder &amp;uid=..., je nach vorhandenen Parametern.
-    /// </summary>
-    public static string BuildUrlWithUid(string baseUrl, string uid)
-    {
-        if (string.IsNullOrEmpty(uid))
-        {
-            Console.WriteLine("No UID available, writing base URL without uid parameter.");
-            return baseUrl;
-        }
-
-        string sep = baseUrl.Contains('?') ? "&" : "?";
-        return baseUrl + sep + "uid=" + uid;
     }
 
     // ============================================================
@@ -285,53 +207,6 @@ public static class Utils
         catch (Exception ex)
         {
             status = "Exception during ISO15693 WriteSingleBlock: " + ex.Message;
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// Debug: schreibt einen Testblock und liest ihn wieder zurück.
-    /// So hast du die Sicherheit, dass Write/Read funktionieren.
-    /// </summary>
-    public static bool TestWriteReadBlockType5(
-        SCardReader reader,
-        string readerName,
-        byte blockNumber,
-        out byte[] readBack,
-        out string status)
-    {
-        readBack = Array.Empty<byte>();
-        status = string.Empty;
-
-        if (reader == null || reader.ActiveProtocol == SCardProtocol.Unset)
-        {
-            status = $"Reader '{readerName}' is not connected.";
-            return false;
-        }
-
-        try
-        {
-            byte[] testData = { 0x11, 0x22, 0x33, 0x44 };
-
-            if (!WriteIso15693SingleBlock(reader, blockNumber, testData, out string writeStatus))
-            {
-                status = $"Write block {blockNumber} failed: {writeStatus}";
-                return false;
-            }
-
-            if (!ReadIso15693MultipleBlocks(reader, blockNumber, 0x00, out var data, out string readStatus))
-            {
-                status = $"Read block {blockNumber} failed: {readStatus}";
-                return false;
-            }
-
-            readBack = data;
-            status = "OK";
-            return true;
-        }
-        catch (Exception ex)
-        {
-            status = $"Exception in TestWriteReadBlockType5: {ex.Message}";
             return false;
         }
     }
@@ -636,107 +511,6 @@ public static class Utils
         }
     }
 
-    // ============================================================
-    //  TYPE 5: NDEF schreiben (vorsichtig benutzen!)
-    // ============================================================
-
-    /// <summary>
-    /// Formatiert einen Type-5-Tag als NDEF-Tag und schreibt eine URI.
-    /// ACHTUNG: Überschreibt ab CC-Block alle Daten.
-    /// Annahmen:
-    ///   - Blockgröße = 4 Byte
-    ///   - CC in Block 0
-    ///   - NDEF-TLV ab Block 1
-    /// </summary>
-    public static bool FormatAndWriteNdefType5(
-        SCardReader reader,
-        string readerName,
-        string url,
-        out string status)
-    {
-        status = string.Empty;
-
-        const int blockSize = 4;
-        const byte ccBlock = 0;
-        const byte ndefStartBlock = 1;
-
-        if (reader == null || reader.ActiveProtocol == SCardProtocol.Unset)
-        {
-            status = $"Reader '{readerName}' is not connected (ActiveProtocol is Unset).";
-            return false;
-        }
-
-        if (string.IsNullOrEmpty(url))
-        {
-            status = "URL is null or empty.";
-            return false;
-        }
-
-        try
-        {
-            string uid = GetCardUid(reader);
-            Console.WriteLine($"[Type5-Write] UID={uid} on reader '{readerName}'");
-
-            // 1) NDEF-TLV bauen
-            byte[] tlv = CreateType5NdefTlv(url, blockSize);
-            int ndefBytes = tlv.Length;
-
-            // 2) CC MLen berechnen:
-            //    NDEF-Bereich beginnt bei Block 1 => Offset = 1 * 4
-            int firstNdefByteOffset = ndefStartBlock * blockSize;
-            int lastNdefByteOffset = firstNdefByteOffset + ndefBytes;
-
-            // CC MLen rechnet in 8-Byte-Einheiten; (MLen+1)*8 = Bytes
-            int memSizeBytes = (int)Math.Ceiling(lastNdefByteOffset / 8.0) * 8;
-            int mlenUnits = memSizeBytes / 8;
-            if (mlenUnits == 0) mlenUnits = 1;
-
-            byte mlen = (byte)(mlenUnits - 1);
-
-            // 3) CC-Block 0 schreiben: E1 40 MLen 00
-            byte[] cc = new byte[blockSize];
-            cc[0] = 0xE1;         // Magic
-            cc[1] = 0x40;         // Mapping 1.0, RW
-            cc[2] = mlen;         // NDEF-Mem in 8-Byte-Einheiten - 1
-            cc[3] = 0x00;         // Features (einfach)
-
-            if (!WriteIso15693SingleBlock(reader, ccBlock, cc, out string ccStatus))
-            {
-                status = $"Failed to write CC block {ccBlock} on reader '{readerName}': {ccStatus}";
-                return false;
-            }
-
-            // 4) NDEF-TLV ab Block 1 schreiben
-            int offset = 0;
-            byte currentBlock = ndefStartBlock;
-
-            while (offset < tlv.Length)
-            {
-                byte[] blockData = new byte[blockSize];
-                int remaining = tlv.Length - offset;
-                int copyLen = Math.Min(blockSize, remaining);
-                Array.Copy(tlv, offset, blockData, 0, copyLen);
-
-                if (!WriteIso15693SingleBlock(reader, currentBlock, blockData, out string blockStatus))
-                {
-                    status = $"Failed to write NDEF block {currentBlock} on reader '{readerName}': {blockStatus}";
-                    return false;
-                }
-
-                offset += copyLen;
-                currentBlock++;
-            }
-
-            status = "OK";
-            return true;
-        }
-        catch (Exception ex)
-        {
-            status = $"Exception while writing Type-5 NDEF on reader '{readerName}': {ex.Message}";
-            return false;
-        }
-    }
-
     /// <summary>
     /// Findet die Byte-Position des ersten gültigen NDEF-TLV (Type 0x03)
     /// im gegebenen Speicherpuffer.
@@ -951,30 +725,6 @@ public static class Utils
     /// und schreibt einen leeren NDEF-Record (TNF=Empty) als Platzhalter:
     /// NDEF-Message = D0 00 00  (MB=1, ME=1, SR=1, TNF=Empty)
     /// NDEF-TLV    = 03 03 D0 00 00 FE (+ Padding)
-    /// 
-    /// Achtung:
-    /// - Überschreibt ab Block 0 (CC) und ab Block 1 den NDEF-Bereich.
-    /// - Reader (ACR1552U / WalletMate II) muss von außen per Connect(...) verbunden sein.
-    /// </summary>
-    /// <summary>
-    /// Formatiert einen bestehenden NFC Forum Type 5 (ISO15693) Tag neu als NDEF-Tag
-    /// und schreibt einen leeren NDEF-Record (TNF=Empty) als Platzhalter:
-    /// NDEF-Message = D0 00 00  (MB=1, ME=1, SR=1, TNF=Empty)
-    /// NDEF-TLV    = 03 03 D0 00 00 FE (+ Padding)
-    /// 
-    /// Achtung:
-    /// - Überschreibt ab Block 0 (CC) und ab Block 1 den NDEF-Bereich.
-    /// - Reader (ACR1552U / WalletMate II) muss von außen per Connect(...) verbunden sein.
-    /// </summary>
-    /// <summary>
-    /// Formatiert einen bestehenden NFC Forum Type 5 (ISO15693) Tag neu als NDEF-Tag
-    /// und schreibt einen leeren NDEF-Record (TNF=Empty) als Platzhalter:
-    /// NDEF-Message = D0 00 00  (MB=1, ME=1, SR=1, TNF=Empty)
-    /// NDEF-TLV    = 03 03 D0 00 00 FE (+ Padding)
-    /// 
-    /// Achtung:
-    /// - Überschreibt CC in Block 0 und den NDEF-Bereich ab Block 1.
-    /// - Reader (ACR1552U / WalletMate II) muss von außen per Connect(...) verbunden sein.
     /// </summary>
     public static bool FormatType5AsEmptyNdef(
         SCardReader reader,
@@ -1066,41 +816,5 @@ public static class Utils
             status = $"Exception in FormatType5AsEmptyNdef on reader '{readerName}': {ex.Message}";
             return false;
         }
-    }
-
-    public static void ReverseUidHexToDecimal_FromGetCardUid(
-        string uidHex,             // format: "04A1CCB1320289"
-        out string reversedHex,
-        out BigInteger decimalValue)
-    {
-        reversedHex = string.Empty;
-        decimalValue = BigInteger.Zero;
-
-        if (string.IsNullOrWhiteSpace(uidHex))
-            return;
-
-        // Input is already hex without separators ("04A1CCB1320289")
-        uidHex = uidHex.ToUpperInvariant();
-
-        if (uidHex.Length % 2 != 0)
-            throw new ArgumentException("UID hex string must have an even number of characters.", nameof(uidHex));
-
-        // Convert UID hex → byte array
-        int byteCount = uidHex.Length / 2;
-        byte[] bytes = new byte[byteCount];
-
-        for (int i = 0; i < byteCount; i++)
-        {
-            bytes[i] = Convert.ToByte(uidHex.Substring(i * 2, 2), 16);
-        }
-
-        // Reverse byte order
-        Array.Reverse(bytes);
-
-        // Convert reversed bytes → hex string
-        reversedHex = BitConverter.ToString(bytes).Replace("-", "");
-
-        // Convert reversed hex to decimal (BigInteger to avoid overflow)
-        decimalValue = BigInteger.Parse("0" + reversedHex, System.Globalization.NumberStyles.HexNumber);
     }
 }
