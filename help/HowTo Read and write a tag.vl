@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="QcdwQ4qSegFOL1UAFRAt1g" LanguageVersion="2025.7.1" Version="0.128">
-  <NugetDependency Id="E0ArPC08OPRQNp8aN87IaH" Location="VL.CoreLib" Version="2025.7.1" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="QcdwQ4qSegFOL1UAFRAt1g" LanguageVersion="2025.7.0" Version="0.128">
+  <NugetDependency Id="E0ArPC08OPRQNp8aN87IaH" Location="VL.CoreLib" Version="2025.7.0" />
   <Patch Id="HSDtn7uDiQ4NNTSkboY8Ds">
     <Canvas Id="EzMKuspF7tLO9lZIN9SOgP" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -82,12 +82,12 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Text" Bounds="349,744,84,15" ShowValueBox="true" isIOBox="true" Value="fiicojl">
+          <Pad Id="KTgFfsMXJvBMIbXQME6uS6" Comment="Text" Bounds="349,744,127,17" ShowValueBox="true" isIOBox="true" Value="https://vvvv.org/">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Ka3dgQYUPfqPsMVx4s5hWT" Comment="Status" Bounds="376,854,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Ka3dgQYUPfqPsMVx4s5hWT" Comment="Status" Bounds="376,854,83,34" ShowValueBox="true" isIOBox="true" />
           <Node Bounds="400,595,65,26" Id="KXhRZWDGDuUOxYFneZhgZ3">
             <p:NodeReference LastCategoryFullName="IO.NFC.NFCDevice2.NFCReadData" LastDependency="VL.IO.NFC.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -118,7 +118,7 @@
             <Pin Id="Jr5AuQ8jXTvLf9gc91hiWA" Name="On Data" Kind="OutputPin" />
           </Node>
           <Pad Id="Tp0Rxz336urLoEY4lBsInk" Comment="Card Removed" Bounds="653,574,35,35" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="Ek2D1oorIyqMsEhglRsuCA" Comment="All Readers" Bounds="382,440,169,49" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Ek2D1oorIyqMsEhglRsuCA" Comment="All Readers" Bounds="382,440,169,65" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="FezMAgcMR8aP6ffeaEny78" Name="Create" />
         <Patch Id="EYQf0nUNFoGN7Zn5lX5L3i" Name="Update" />

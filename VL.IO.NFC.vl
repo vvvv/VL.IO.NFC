@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="EWHWcwf3oBvPnhn254YyBa" LanguageVersion="2025.7.1" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="EWHWcwf3oBvPnhn254YyBa" LanguageVersion="2025.7.0" Version="0.128">
   <Patch Id="Rgz0iK0cdl5O6XLZAnSI2k">
     <Canvas Id="EtMz6eWyJpjMOVOROl6714" DefaultCategory="IO.NFC" CanvasType="FullCategory">
       <!--
@@ -923,8 +923,8 @@
     </Node>
     <Patch Id="KanHIiSxJZ4NXyISBAfDSm" Name="Read" />
   </Patch>
-  <NugetDependency Id="Ko9OqCOVyY7Pz8mbJrOqb0" Location="VL.CoreLib" Version="2025.7.1" />
+  <NugetDependency Id="Ko9OqCOVyY7Pz8mbJrOqb0" Location="VL.CoreLib" Version="2025.7.0" />
   <NugetDependency Id="LVsfByM4mZmPoA1nypA8nZ" Location="NdefLibrary" Version="4.1.0" />
-  <PlatformDependency Id="O3koraTppuQPmt8BWWz0sp" Location="./lib/net8.0/VL.IO.NFC.dll" />
   <NugetDependency Id="IYSZXpDcIsLPGX7AsWTZD8" Location="PCSC" Version="7.0.1" />
+  <ProjectDependency Id="IPGoWgPdt6BNQY0ieh5VFl" Location="./src/VL.IO.NFC.csproj" />
 </Document>
